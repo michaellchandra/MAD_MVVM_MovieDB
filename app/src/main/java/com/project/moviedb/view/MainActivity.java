@@ -1,9 +1,12 @@
 package com.project.moviedb.view;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0c2d7a"));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         til_movie_id = findViewById(R.id.til_movie_id);
         txt_show = findViewById(R.id.txt_show_main);

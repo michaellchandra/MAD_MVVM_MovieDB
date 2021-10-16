@@ -1,11 +1,14 @@
 package com.project.moviedb.view;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.project.moviedb.R;
@@ -30,6 +33,13 @@ public class NowPlayingActivity extends AppCompatActivity {
         view_model.getNowPlaying();
         view_model.getResultNowPlaying();
         view_model.getResultNowPlaying().observe(NowPlayingActivity.this, showNowPlaying);
+
+
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0c2d7a"));
+        actionBar.setBackgroundDrawable(colorDrawable);
     }
 
     private Observer<NowPlaying> showNowPlaying = new Observer<NowPlaying>() {
