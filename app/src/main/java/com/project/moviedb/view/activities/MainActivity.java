@@ -1,4 +1,4 @@
-package com.project.moviedb.view;
+package com.project.moviedb.view.activities;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
