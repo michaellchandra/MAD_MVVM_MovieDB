@@ -2,6 +2,7 @@ package com.project.moviedb.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,15 +21,16 @@ import com.project.moviedb.model.NowPlaying;
 import com.project.moviedb.view.activities.MovieDetailsActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.CardViewViewHolder> {
 
     private Context context;
-    private ArrayList<NowPlaying.Results> listNowPlaying;
-    private ArrayList<NowPlaying.Results> getListNowPlaying () {
+    private List<NowPlaying.Results> listNowPlaying;
+    private List<NowPlaying.Results> getListNowPlaying () {
         return listNowPlaying;
     }
-    public void setListNowPlaying(ArrayList<NowPlaying.Results> listNowPlaying) {
+    public void setListNowPlaying(List<NowPlaying.Results> listNowPlaying) {
         this.listNowPlaying = listNowPlaying;
     }
 
@@ -53,14 +56,17 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
         Glide.with(context)
                 .load(Const.IMG_URL + results.getPoster_path())
                 .into(holder.img_poster);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
-                intent.putExtra("movieID","" + results.getId());
-                context.startActivity(intent);
-            }
-        });
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, MovieDetailsActivity.class);
+//                intent.putExtra("movieID","" + results.getId());
+//                context.startActivity(intent);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("movieID", ""+results.getId());
+//                Navigation.findNavController(view).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+//            }
+//        });
     }
 
     @Override

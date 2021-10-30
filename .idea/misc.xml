@@ -4,11 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/activity_main_menu.xml" value="0.2" />
         <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/activity_movie_details.xml" value="0.4" />
         <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/activity_now_playing.xml" value="0.25" />
         <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/card_now_playing.xml" value="0.536" />
-        <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/fragment_now_playing.xml" value="0.25" />
+        <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/fragment_movie_details.xml" value="0.264" />
+        <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/fragment_now_playing.xml" value="0.2" />
         <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/layout/fragment_up_coming.xml" value="0.25" />
         <entry key="..\:/UNIVERSITAS CIPUTRA/SEMESTER 3/Mobile Application Development/Week-4/Senin/MovieDB/app/src/main/res/menu/main_menu.xml" value="0.264" />
       </map>

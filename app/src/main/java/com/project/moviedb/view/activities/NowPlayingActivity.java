@@ -47,7 +47,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         public void onChanged(NowPlaying nowPlaying) {
             rv_now_playing.setLayoutManager(new LinearLayoutManager(NowPlayingActivity.this));
             NowPlayingAdapter adapter = new NowPlayingAdapter(NowPlayingActivity.this);
-            adapter.setListNowPlaying((ArrayList<NowPlaying.Results>) nowPlaying.getResults());
+            adapter.setListNowPlaying(nowPlaying.getResults());
             rv_now_playing.setAdapter(adapter);
         }
     };
