@@ -1,5 +1,6 @@
 package com.project.moviedb.view;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
@@ -23,8 +24,14 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+//        actionBar.hide();
+
 //        toolbar = findViewById(R.id.toolbar_main_menu);
 //        setSupportActionBar(toolbar);
+
         bottomNavigationView = findViewById(R.id.bottom_nav_main_menu);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_fragment_main_menu);
 

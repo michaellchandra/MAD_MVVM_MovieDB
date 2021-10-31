@@ -19,8 +19,8 @@
     <fragment
         android:id="@+id/nowPlayingFragment"
         android:name="com.project.moviedb.view.fragments.NowPlayingFragment"
-        android:label="fragment_now_playing"
-        tools:layout="@layout/fragment_now_playing" >
+        android:label="@string/now_playing"
+        tools:layout="@layout/fragment_now_playing">
         <action
             android:id="@+id/action_nowPlayingFragment_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
@@ -28,6 +28,10 @@
     <fragment
         android:id="@+id/upComingFragment"
         android:name="com.project.moviedb.view.fragments.upComingFragment"
-        android:label="fragment_up_coming"
-        tools:layout="@layout/fragment_up_coming" />
+        android:label="@string/up_coming"
+        tools:layout="@layout/fragment_up_coming">
+        <action
+            android:id="@+id/action_upComingFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
 </navigation>

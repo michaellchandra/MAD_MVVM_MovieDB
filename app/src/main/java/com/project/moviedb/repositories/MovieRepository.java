@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.project.moviedb.helper.Const;
 import com.project.moviedb.model.Movies;
 import com.project.moviedb.model.NowPlaying;
+import com.project.moviedb.model.UpComing;
 import com.project.moviedb.retrofit.ApiService;
 
 import retrofit2.Call;
@@ -60,6 +61,23 @@ public class MovieRepository {
         });
 
         return result;
+    }
+
+    public MutableLiveData<UpComing> getUpComingData() {
+        final MutableLiveData<UpComing> result = new MutableLiveData<>();
+        ApiService.endPoint().getUpComing(Const.API_KEY).enqueue(new Callback<UpComing>() {
+            @Override
+            public void onResponse(Call<UpComing> call, Response<UpComing> response) {
+                result.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<UpComing> call, Throwable t) {
+
+            }
+        });
+        return result;
+
     }
 
 

@@ -64,6 +64,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         @Override
         public void onChanged(Movies movies) {
             String img_path = movies.getPoster_path().toString();
+            String img_path1 = movies.getBackdrop_path();
 
             Glide.with(MovieDetailsActivity.this).load(Const.IMG_URL + img_path).into(details_imageView);
 

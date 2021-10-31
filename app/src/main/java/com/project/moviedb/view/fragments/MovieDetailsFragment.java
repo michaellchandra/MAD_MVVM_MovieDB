@@ -1,15 +1,23 @@
 package com.project.moviedb.view.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.project.moviedb.R;
+import com.project.moviedb.helper.Const;
+import com.project.moviedb.model.Movies;
+import com.project.moviedb.viewmodel.MovieViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +25,7 @@ import com.project.moviedb.R;
  * create an instance of this fragment.
  */
 public class MovieDetailsFragment extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +67,14 @@ public class MovieDetailsFragment extends Fragment {
         }
     }
 
-    private TextView lbl_movie_id;
+    private TextView lbl_movie_id, lbl_movie_description_details_fragment, lbl_movie_genre_details_fragment,
+            lbl_movie_rating_details_fragment, lbl_movie_popularity_details_fragment, lbl_movie_average_vote_details_fragment,
+            lbl_movie_title_details_fragment;
+
+    private ImageView img_cover_details_fragment, img_thumb_details_fragment;
+    private String movieGENRE ="";
+    private MovieViewModel viewModel;
+    private String movieID = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +82,52 @@ public class MovieDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
 
-        lbl_movie_id = view.findViewById(R.id.lbl_movie_id_details_fragment);
+        lbl_movie_title_details_fragment = view.findViewById(R.id.lbl_movie_title_details_fragment);
+        lbl_movie_average_vote_details_fragment = view.findViewById(R.id.lbl_movie_average_vote_details_fragment);
+        lbl_movie_description_details_fragment = view.findViewById(R.id.lbl_movie_description_details_fragment);
+        lbl_movie_genre_details_fragment = view.findViewById(R.id.lbl_movie_genre_details_fragment);
+        lbl_movie_popularity_details_fragment = view.findViewById(R.id.lbl_movie_popularity_details_fragment);
+        lbl_movie_rating_details_fragment = view.findViewById(R.id.lbl_movie_rating_details_fragment);
 
-        String movieID = getArguments().getString("movieID");
-        lbl_movie_id.setText(movieID);
+
+
+        String movieID = getArguments().getString("movieId");
+        viewModel = new ViewModelProvider(MovieDetailsFragment.this).get(MovieViewModel.class);
+        viewModel.getMovieById(movieID);
+        viewModel.getResultGetMovieById().observe(getActivity(), showResultMovie);
+
+//        lbl_movie_id = view.findViewById(R.id.lbl_movie_id_details_fragment);
+
+//        String movieID = getArguments().getString("movieID");
+//        lbl_movie_id.setText(movieID);
 
         return view;
     }
+
+    private Observer<Movies> showResultMovie = new Observer<Movies>() {
+        @Override
+        public void onChanged(Movies movies) {
+            String img_path = Const.IMG_URL+ movies.getPoster_path().toString();
+            String img_path_back = Const.IMG_URL+ movies.getBackdrop_path();
+
+            Glide.with(MovieDetailsFragment.this).load(img_path).into(img_cover_details_fragment);
+            Glide.with(MovieDetailsFragment.this).load(img_path_back).into(img_thumb_details_fragment);
+
+            lbl_movie_title_details_fragment.setText(movies.getTitle());
+            lbl_movie_description_details_fragment.setText(movies.getOverview());
+
+            for (int i=0; i<movies.getGenres().size(); i++){
+
+                if(i==movies.getGenres().size()-1){
+                    movieGENRE+=movies.getGenres().get(i).getName();
+                } else {
+                    movieGENRE+=movies.getGenres().get(i).getName()+ ", ";
+                }
+
+            }
+
+            lbl_movie_genre_details_fragment.setText(movieGENRE);
+            lbl_movie_rating_details_fragment.setText(" " + movies.getVote_average());
+        }
+    };
 }
