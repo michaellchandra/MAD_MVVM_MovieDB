@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.project.moviedb.R;
+import com.project.moviedb.adapter.CompanyAdapter;
 import com.project.moviedb.helper.Const;
 import com.project.moviedb.model.Movies;
 import com.project.moviedb.viewmodel.MovieViewModel;
@@ -69,18 +72,21 @@ public class MovieDetailsFragment extends Fragment {
 
     private TextView lbl_movie_id, lbl_movie_description_details_fragment, lbl_movie_genre_details_fragment,
             lbl_movie_rating_details_fragment, lbl_movie_popularity_details_fragment, lbl_movie_average_vote_details_fragment,
-            lbl_movie_title_details_fragment;
+            lbl_movie_title_details_fragment, lbl_movie_tagline_details_fragment, lbl_movie_date_details_fragment;
 
     private ImageView img_cover_details_fragment, img_thumb_details_fragment;
     private String movieGENRE ="";
     private MovieViewModel viewModel;
     private String movieID = "";
+    private RecyclerView rv_movie_companies_details_fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
+        img_thumb_details_fragment = view.findViewById(R.id.img_thumb_details_fragment);
+        img_cover_details_fragment = view.findViewById(R.id.img_cover_details_fragment);
 
         lbl_movie_title_details_fragment = view.findViewById(R.id.lbl_movie_title_details_fragment);
         lbl_movie_average_vote_details_fragment = view.findViewById(R.id.lbl_movie_average_vote_details_fragment);
@@ -88,10 +94,13 @@ public class MovieDetailsFragment extends Fragment {
         lbl_movie_genre_details_fragment = view.findViewById(R.id.lbl_movie_genre_details_fragment);
         lbl_movie_popularity_details_fragment = view.findViewById(R.id.lbl_movie_popularity_details_fragment);
         lbl_movie_rating_details_fragment = view.findViewById(R.id.lbl_movie_rating_details_fragment);
+        lbl_movie_tagline_details_fragment = view.findViewById(R.id.lbl_movie_tagline_details_fragment);
+        rv_movie_companies_details_fragment = view.findViewById(R.id.rv_movie_companies_details_fragment);
+        lbl_movie_date_details_fragment = view.findViewById(R.id.lbl_movie_date_details_fragment);
 
 
 
-        String movieID = getArguments().getString("movieId");
+        String movieID = getArguments().getString("movieID");
         viewModel = new ViewModelProvider(MovieDetailsFragment.this).get(MovieViewModel.class);
         viewModel.getMovieById(movieID);
         viewModel.getResultGetMovieById().observe(getActivity(), showResultMovie);
@@ -109,12 +118,30 @@ public class MovieDetailsFragment extends Fragment {
         public void onChanged(Movies movies) {
             String img_path = Const.IMG_URL+ movies.getPoster_path().toString();
             String img_path_back = Const.IMG_URL+ movies.getBackdrop_path();
+            String vote_average = String.valueOf(movies.getVote_average());
+            String popularity = String.valueOf(movies.getPopularity());
+            String voting = String.valueOf(movies.getVote_count());
 
-            Glide.with(MovieDetailsFragment.this).load(img_path).into(img_cover_details_fragment);
-            Glide.with(MovieDetailsFragment.this).load(img_path_back).into(img_thumb_details_fragment);
+
+
+            rv_movie_companies_details_fragment.setLayoutManager(new GridLayoutManager(getActivity(),
+                    1, RecyclerView.HORIZONTAL, false));
+
+            CompanyAdapter adapter = new CompanyAdapter(getActivity());
+            adapter.setCompaniesList(movies.getProduction_companies());
+            rv_movie_companies_details_fragment.setAdapter(adapter);
+
+            Glide.with(MovieDetailsFragment.this).load(img_path).into(img_thumb_details_fragment);
+            Glide.with(MovieDetailsFragment.this).load(img_path_back).into(img_cover_details_fragment);
 
             lbl_movie_title_details_fragment.setText(movies.getTitle());
             lbl_movie_description_details_fragment.setText(movies.getOverview());
+            lbl_movie_tagline_details_fragment.setText(movies.getTagline());
+            lbl_movie_average_vote_details_fragment.setText(vote_average);
+            lbl_movie_popularity_details_fragment.setText(popularity);
+            lbl_movie_rating_details_fragment.setText(voting);
+            lbl_movie_date_details_fragment.setText(movies.getRelease_date());
+
 
             for (int i=0; i<movies.getGenres().size(); i++){
 
@@ -127,7 +154,7 @@ public class MovieDetailsFragment extends Fragment {
             }
 
             lbl_movie_genre_details_fragment.setText(movieGENRE);
-            lbl_movie_rating_details_fragment.setText(" " + movies.getVote_average());
+            lbl_movie_rating_details_fragment.setText(" " + voting);
         }
     };
 }

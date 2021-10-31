@@ -5,7 +5,7 @@
     android:id="@+id/cons_card_nowplaying"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/blue">
+    android:background="@color/bluelow">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_card_nowplaying"

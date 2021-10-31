@@ -95,7 +95,7 @@ public class upComingFragment extends Fragment {
                 public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                     Bundle bundle = new Bundle();
                     bundle.putString("movieID", "" + upComing.getResults().get(position).getId());
-                    Navigation.findNavController(v).navigate(R.id.action_nowPlayingFragment_to_movieDetailsFragment, bundle);
+                    Navigation.findNavController(v).navigate(R.id.action_upComingFragment_to_movieDetailsFragment, bundle);
                 }
             });
         }
