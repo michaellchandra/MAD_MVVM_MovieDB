@@ -3,12 +3,14 @@ package com.project.moviedb.view.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,9 @@ import com.project.moviedb.R;
 import com.project.moviedb.adapter.CompanyAdapter;
 import com.project.moviedb.helper.Const;
 import com.project.moviedb.model.Movies;
+import com.project.moviedb.retrofit.ApiEndPoint;
+import com.project.moviedb.view.MainMenuActivity;
+import com.project.moviedb.view.loading_bar;
 import com.project.moviedb.viewmodel.MovieViewModel;
 
 /**
@@ -80,9 +85,12 @@ public class MovieDetailsFragment extends Fragment {
     private String movieID = "";
     private RecyclerView rv_movie_companies_details_fragment;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_details, container, false);
         img_thumb_details_fragment = view.findViewById(R.id.img_thumb_details_fragment);
@@ -139,7 +147,7 @@ public class MovieDetailsFragment extends Fragment {
             lbl_movie_tagline_details_fragment.setText(movies.getTagline());
             lbl_movie_average_vote_details_fragment.setText(vote_average);
             lbl_movie_popularity_details_fragment.setText(popularity);
-            lbl_movie_rating_details_fragment.setText(voting);
+            lbl_movie_rating_details_fragment.setText(voting+ "/10");
             lbl_movie_date_details_fragment.setText(movies.getRelease_date());
 
 
@@ -157,4 +165,6 @@ public class MovieDetailsFragment extends Fragment {
             lbl_movie_rating_details_fragment.setText(" " + voting);
         }
     };
+
+
 }

@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.project.moviedb.R;
 import com.project.moviedb.helper.Const;
+import com.project.moviedb.model.Movies;
 import com.project.moviedb.model.NowPlaying;
 import com.project.moviedb.view.activities.MovieDetailsActivity;
 
@@ -39,6 +41,8 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
     }
 
 
+
+
     @NonNull
     @Override
     public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,9 +53,13 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final NowPlaying.Results results = getListNowPlaying().get(position);
+
+        String vote_average = String.valueOf(results.getVote_average());
+
         holder.lbl_title.setText(results.getTitle());
         holder.lbl_release_date.setText(results.getRelease_date());
         holder.lbl_overview.setText(results.getOverview());
+        holder.lbl_avg_rate_now_playing.setText(vote_average);
 
         Glide.with(context)
                 .load(Const.IMG_URL + results.getPoster_path())
@@ -76,7 +84,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView img_poster;
-        TextView lbl_title, lbl_overview, lbl_release_date;
+        TextView lbl_title, lbl_overview, lbl_release_date, lbl_avg_rate_now_playing;
         CardView cardView;
 
         public CardViewViewHolder(@NonNull View itemView) {
@@ -86,6 +94,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Ca
             lbl_overview = itemView.findViewById(R.id.lbl_overview_card_nowplaying);
             lbl_release_date = itemView.findViewById(R.id.lbl_release_card_nowplaying);
             cardView = itemView.findViewById(R.id.cv_card_nowplaying);
+            lbl_avg_rate_now_playing = itemView.findViewById(R.id.lbl_avg_rate_now_playing);
         }
     }
 }

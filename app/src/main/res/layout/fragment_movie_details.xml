@@ -5,7 +5,7 @@
     android:id="@+id/cons_movie_details_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bluelow"
+    android:background="@color/black1"
     tools:context=".view.fragments.MovieDetailsFragment">
 
     <ScrollView
@@ -70,7 +70,7 @@
                 android:id="@+id/img_thumb_details_fragment"
                 android:layout_width="115dp"
                 android:layout_height="165dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="110dp"
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +79,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:backgroundTint="@color/black2"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -96,16 +97,17 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/black2">
 
                     <TextView
                         android:id="@+id/lbl_movie_plot_fragment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="15dp"
                         android:text="PLOT"
-                        android:textColor="@color/black"
+                        android:textColor="@color/lightorange"
                         android:textSize="25dp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -114,11 +116,12 @@
                     <TextView
                         android:id="@+id/lbl_movie_description_details_fragment"
                         android:layout_width="350dp"
-                        android:layout_height="90dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:maxLines="5"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/lbl_movie_plot_fragment" />
 
@@ -129,7 +132,7 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="32dp"
                         android:text="GENRE"
-                        android:textColor="@color/black"
+                        android:textColor="@color/lightorange"
                         android:textSize="18dp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +145,7 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:text="TextView"
+                        android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -152,7 +156,7 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="24dp"
                         android:text="Companies"
-                        android:textColor="@color/black"
+                        android:textColor="@color/lightorange"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/lbl_movie_description_details_fragment" />

@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.moviedb.R;
@@ -19,6 +20,7 @@ public class MainMenuActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     NavHostFragment navHostFragment;
     Toolbar toolbar;
+    loading_bar loading = new loading_bar(MainMenuActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,14 @@ public class MainMenuActivity extends AppCompatActivity {
 
 //        toolbar = findViewById(R.id.toolbar_main_menu);
 //        setSupportActionBar(toolbar);
+        loading.startLoadingDialog();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.dismissDialog();
+            }
+        }, 2000);
 
         bottomNavigationView = findViewById(R.id.bottom_nav_main_menu);
         navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_fragment_main_menu);

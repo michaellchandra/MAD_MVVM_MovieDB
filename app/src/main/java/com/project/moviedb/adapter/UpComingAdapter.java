@@ -51,9 +51,13 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardVi
     @Override
     public void onBindViewHolder(@NonNull UpComingAdapter.CardViewHolder holder, int position) {
         final UpComing.Results results = getListUpComing().get(position);
+
+        String vote_average = String.valueOf(results.getVote_average());
+
         holder.lbl_title.setText(results.getTitle());
         holder.lbl_release_date.setText(results.getRelease_date());
         holder.lbl_overview.setText(results.getOverview());
+        holder.lbl_avg_rate_upcoming_card.setText(vote_average);
 
         Glide.with(context)
                 .load(Const.IMG_URL + results.getPoster_path())
@@ -67,7 +71,7 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardVi
 
     public class CardViewHolder extends RecyclerView.ViewHolder {
 
-        TextView lbl_title, lbl_overview, lbl_release_date;
+        TextView lbl_title, lbl_overview, lbl_release_date, lbl_avg_rate_upcoming_card;
         CardView cardView;
         ImageView img_poster;
 
@@ -79,6 +83,8 @@ public class UpComingAdapter extends RecyclerView.Adapter<UpComingAdapter.CardVi
             lbl_release_date = itemView.findViewById(R.id.lbl_release_card_upcoming);
             cardView = itemView.findViewById(R.id.cv_up_coming);
             img_poster = itemView.findViewById(R.id.img_poster_card_upcoming);
+            lbl_avg_rate_upcoming_card = itemView.findViewById(R.id.lbl_avg_rate_upcoming_card);
+
         }
     }
 }

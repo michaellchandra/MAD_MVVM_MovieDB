@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.project.moviedb.R;
 import com.project.moviedb.adapter.NowPlayingAdapter;
 import com.project.moviedb.helper.ItemClickSupport;
+import com.project.moviedb.model.Movies;
 import com.project.moviedb.model.NowPlaying;
 import com.project.moviedb.view.activities.NowPlayingActivity;
 import com.project.moviedb.viewmodel.MovieViewModel;
@@ -71,6 +72,8 @@ public class NowPlayingFragment extends Fragment {
 
     private RecyclerView rv_now_playing;
     private MovieViewModel view_model;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

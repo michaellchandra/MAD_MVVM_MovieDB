@@ -9,6 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FF5722</color>
     <color name="blue">#1C59F4</color>
-    <color name="bluelow">#0337BC</color>
+    <color name="bluelow">#001857</color>
+    <color name="bluelow2">#00268A</color>
+    <color name="black1">#1A1A2E</color>
+    <color name="black2">#16213E</color>
+    <color name="lightorange">#FDB827</color>
+    <color name="navy">#0F3460</color>
 
 </resources>
